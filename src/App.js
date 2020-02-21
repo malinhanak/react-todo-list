@@ -13,12 +13,15 @@ function App() {
     if (item.trim() === '') return;
     return setItems([...items, todo]);
   };
+
   const handleRemove = (index) => {
     return setItems(items.filter((todo) => todo.id !== index));
   };
+
   const handleAllChecked = () => {
     return setItems(items.filter((todo) => todo.checked === false));
   };
+
   const handleChange = (index) => {
     return setItems(
       items.map((todo) => {
