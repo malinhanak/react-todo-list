@@ -8,7 +8,8 @@ import './App.css';
 function App() {
   const [items, setItems] = useState([]);
 
-  const addTodo = (item) => {
+  const addTodo = (item, e) => {
+    e.preventDefault();
     const todo = { text: item, id: uuid(), checked: false };
     if (item.trim() === '') return;
     return setItems([...items, todo]);

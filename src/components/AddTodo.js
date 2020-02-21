@@ -1,21 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from '../styles/Form';
 
 const TodoForm = ({ addTodo }) => {
-  let input;
+  const [input, setInput] = useState('');
   return (
-    <Form
-      onSubmit={(e) => {
-        e.preventDefault();
-        addTodo(input.value);
-        input.value = '';
-      }}
-    >
+    <Form onSubmit={(e) => addTodo(input, e)}>
       <input
         className="submit-task"
-        ref={(node) => {
-          input = node;
-        }}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
       />
       <button>Submit</button>
     </Form>
