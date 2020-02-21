@@ -1,9 +1,10 @@
 import React from 'react';
+import { Form } from '../styles/Form';
 
 const TodoForm = ({ addTodo }) => {
   let input;
   return (
-    <form
+    <Form
       onSubmit={(e) => {
         e.preventDefault();
         addTodo(input.value);
@@ -16,8 +17,8 @@ const TodoForm = ({ addTodo }) => {
           input = node;
         }}
       />
-      <button className="submitBtn">Submit</button>
-    </form>
+      <button>Submit</button>
+    </Form>
   );
 };
 
