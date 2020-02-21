@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { uuid } from 'uuidv4';
-import TodoForm from './components/TodoForm';
-import TodoList from './components/Todo';
+import TodoForm from './components/AddTodo';
+import TodoList from './components/Todos';
 import Title from './components/Title';
 import './App.css';
 
@@ -35,7 +35,7 @@ function App() {
       <Title todoCount={items.length} />
       <TodoForm addTodo={addTodo} />
       <TodoList
-        todos={items}
+        todoList={items}
         checked={items.checked}
         handleChange={handleChange}
         remove={handleRemove}

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Title as H1 } from '../styles/Title';
 
 const Title = ({ todoCount }) => {
   return (
-    <h1>
+    <H1>
       In my Todo list <small>there are {todoCount} chores</small>
-    </h1>
+    </H1>
   );
 };
 export default Title;

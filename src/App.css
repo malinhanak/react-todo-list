@@ -10,9 +10,7 @@ body {
   align-items: center;
   background-color: white;
 }
-h1 > small {
-  font-size: 50%;
-}
+
 #root {
   width: 500px;
 }
@@ -40,67 +38,4 @@ form {
   justify-content: center;
   align-items: center;
   background-color: #66ccff;
-}
-ul.todo-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin: 0;
-  padding: 0;
-}
-ul.todo-list > li {
-  width: 100%;
-  padding: 10px 10px;
-  background: #f1f1f1;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-ul.todo-list > li > span > span {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-ul.todo-list > li > .lnr {
-  margin-left: auto;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.lnr:hover {
-  color: red;
-}
-input[type='checkbox'] {
-  width: 20px;
-  height: 20px;
-  padding: 5px 5px;
-  margin: 0 10px 0 0;
-}
-ul.todo-list > li:nth-child(odd) {
-  background: lightgray;
-}
-.done {
-  text-decoration: line-through;
-  color: indianred;
-  font-style: italic;
-}
-.notdone {
-  text-decoration: none;
-}
-.clearAll {
-  padding: 1rem;
-  background: indianred;
-  font-weight: bold;
-  color: #fff;
-  border: 0;
-  width: 100%;
-}
-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
 }
