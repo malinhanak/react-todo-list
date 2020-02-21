@@ -1,63 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { uuid } from 'uuidv4';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/Todo';
 import Title from './components/Title';
 import './App.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      itemlist: [],
-    };
-    this.handleRemove = this.handleRemove.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAllChecked = this.handleAllChecked.bind(this);
-    this.addTodo = this.addTodo.bind(this);
-  }
-  addTodo(val) {
-    const todo = { text: val, id: Date.now(), checked: false };
-    if (val.trim() === '') {
-      return null;
-    } else {
-      this.state.itemlist.push(todo);
-      this.setState({ itemlist: this.state.itemlist });
-    }
-  }
-  handleRemove(index) {
-    const remainder = this.state.itemlist.filter((todo, i) => {
-      if (i !== index) return todo;
-    });
-    this.setState({ itemlist: remainder });
-  }
-  handleAllChecked() {
-    const notDone = this.state.itemlist.filter((todo) => {
-      if (todo.checked === false) return todo;
-    });
-    this.setState({ itemlist: notDone });
-  }
-  handleChange(index) {
-    const newState = this.state.itemlist.map((todo, i) =>
-      index === i ? { ...todo, checked: !todo.checked } : todo,
-    );
-    this.setState({ itemlist: newState });
-  }
+function App() {
+  const [items, setItems] = useState([]);
 
-  render() {
-    return (
-      <div>
-        <Title todoCount={this.state.itemlist.length} />
-        <TodoForm addTodo={this.addTodo} />
-        <TodoList
-          todos={this.state.itemlist}
-          checked={this.state.itemlist.checked}
-          handleChange={this.handleChange}
-          remove={this.handleRemove}
-          removeAll={this.handleAllChecked}
-        />
-      </div>
+  const addTodo = (item) => {
+    const todo = { text: item, id: uuid(), checked: false };
+    if (item.trim() === '') return;
+    return setItems([...items, todo]);
+  };
+  const handleRemove = (index) => {
+    return setItems(items.filter((todo) => todo.id !== index));
+  };
+  const handleAllChecked = () => {
+    return setItems(items.filter((todo) => todo.checked === false));
+  };
+  const handleChange = (index) => {
+    return setItems(
+      items.map((todo) => {
+        return todo.id === index ? { ...todo, checked: !todo.checked } : todo;
+      }),
     );
-  }
+  };
+
+  return (
+    <div>
+      <Title todoCount={items.length} />
+      <TodoForm addTodo={addTodo} />
+      <TodoList
+        todos={items}
+        checked={items.checked}
+        handleChange={handleChange}
+        remove={handleRemove}
+        removeAll={handleAllChecked}
+      />
+    </div>
+  );
 }
 
 export default App;

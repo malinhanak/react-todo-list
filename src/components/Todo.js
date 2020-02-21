@@ -1,18 +1,18 @@
 import React from 'react';
 
 const TodoList = ({ todos, remove, handleChange, removeAll }) => {
-  const todoNode = todos.map((todo, index) => {
+  const todoNode = todos.map((todo) => {
     return (
-      <li key={index}>
+      <li key={todo.id}>
         <input
           type="checkbox"
           checked={todo.checked}
-          onChange={() => handleChange(index)}
+          onChange={() => handleChange(todo.id)}
         />
         <span className={todo.checked ? 'done' : 'notdone'}>{todo.text}</span>
         <span
           onClick={() => {
-            remove(index);
+            remove(todo.id);
           }}
           className="lnr"
         >
