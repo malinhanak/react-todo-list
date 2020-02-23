@@ -6,6 +6,7 @@ const TodoForm = ({ addTodo }) => {
   return (
     <Form onSubmit={(e) => addTodo(input, e)}>
       <input
+        data-testid="add-input"
         className="submit-task"
         value={input}
         onChange={(e) => setInput(e.target.value)}

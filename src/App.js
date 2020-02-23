@@ -32,7 +32,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div data-testid="application">
       <Title todoCount={items.length} />
       <TodoForm addTodo={addTodo} />
       <TodoList
